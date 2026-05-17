@@ -110,9 +110,26 @@ button:hover{
 
 </div>
 
-<audio autoplay loop>
+<audio id="bgMusic" loop>
   <source src="song.mp3" type="audio/mp3">
 </audio>
+
+<script>
+  const music = document.getElementById("bgMusic");
+
+  function playMusic() {
+    music.play().catch(() => {});
+    document.removeEventListener("click", playMusic);
+  }
+
+  // Try auto play
+  window.addEventListener("load", () => {
+    music.play().catch(() => {});
+  });
+
+  // Force play on first touch
+  document.addEventListener("click", playMusic);
+</script>
 
 <script>
 const message = `Agar aap yeh dekh rahi hain... toh main bas itna kehna chahta hoon...
